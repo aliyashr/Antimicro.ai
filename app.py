@@ -13,7 +13,7 @@ from streamlit_lottie import st_lottie
 
 
 #Import profiling
-import pandas_profiling
+from ydata_profiling import ProfileReport
 from streamlit_pandas_profiling import st_profile_report
 
 #Machine Learning
@@ -141,7 +141,7 @@ You can download the best model as a Pickle file which is a portable version of 
             st.dataframe(df)
             try:
                 st.title("Automated Exploratory Data Analysis")
-                profile_report = df.profile_report()
+                profile_report = ProfileReport(df)
                 st_profile_report(profile_report)
             except (NameError, ValueError):
                 st.info("No CSV file loaded. Please check the file type")
